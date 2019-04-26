@@ -43,8 +43,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BinaryCoding.cs" />
+    <Compile Include="Coding.cs" />
+    <Compile Include="FloatingPointCoding.cs" />
+    <Compile Include="IntegerCoding.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ReadData.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
