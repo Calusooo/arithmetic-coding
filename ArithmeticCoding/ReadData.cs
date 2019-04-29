@@ -10,70 +10,70 @@ namespace ArithmeticCoding.ReadingData
     {
         public ReadData()
         {
-            this.Slowo1 = "0";
-            this.KodZM = 0;
+            this.WordToCode = "0";
+            this.FloatingPointCodeToDecode = 0;
         }
 
-        public ReadData(string slowo)
+        public ReadData(string word)
         {
-            this.Slowo1 = slowo;
+            this.WordToCode = word;
         }
 
-        public ReadData(double kod)
+        public ReadData(double code)
         {
-            this.KodZM = kod;
+            this.FloatingPointCodeToDecode = code;
         }
 
-        public string Slowo1
-        {
-            get;
-            protected set;
-        }
-
-        public string KodCal
+        public string WordToCode
         {
             get;
             protected set;
         }
 
-        public string KodBin
+        public string IntegerCodeToDecode
         {
             get;
             protected set;
         }
 
-        public double KodZM
+        public string BinaryCodeToDecode
         {
             get;
             protected set;
         }
 
-        public string czytajSlowo()
+        public double FloatingPointCodeToDecode
+        {
+            get;
+            protected set;
+        }
+
+        public string ReadWord()
         {
             Console.Write("Podaj slowo: ");
-            Slowo1 = Console.ReadLine();
-            return Slowo1;
+            WordToCode = Console.ReadLine();
+            return WordToCode;
         }
 
-        public double czytajKod()
+        public double ReadFloatingPointCodeToDecode()
         {
             Console.Write("Wprowadz wygenerowany kod zmiennoprzecinkowy: ");
-            KodZM = Convert.ToDouble(Console.ReadLine());
-            return KodZM;
+            FloatingPointCodeToDecode = Convert.ToDouble(Console.ReadLine());
+            return FloatingPointCodeToDecode;
         }
 
-        public string czytajKod2()
+        public string ReadBinaryCodeToDecode()
         {
             Console.Write("Wprowadz wygenerowany kod binarny: ");
-            KodBin = Console.ReadLine();
-            return KodBin;
+            BinaryCodeToDecode = Console.ReadLine();
+            return BinaryCodeToDecode;
         }
 
-        public string czytajKod1()
+        public string ReadIntegerCodeToDecode()
         {
             Console.Write("Wprowadz wygenerowany kod calkowity: ");
-            KodCal = Console.ReadLine();
-            return KodCal;
+            IntegerCodeToDecode = Console.ReadLine();
+            return IntegerCodeToDecode;
         }
     }
 }

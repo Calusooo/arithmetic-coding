@@ -12,63 +12,63 @@ namespace ArithmeticCoding.ABSCoding
         public static double przedzial1Do, przedzial2Do, przedzial3Do, przedzial4Do;
         public Coding()
         {
-            this.Kod = 0;
-            this.Kod2 = "";
+            this.CodeDbl = 0;
+            this.CodeStr = "";
         }
 
-        public Coding(double kod)
+        public Coding(double code)
         {
-            this.Kod = kod;
+            this.CodeDbl = code;
         }
 
-        public Coding(string kod)
+        public Coding(string code)
         {
-            this.Kod2 = kod;
+            this.CodeStr = code;
         }
 
-        public double Kod
-        {
-            get;
-            protected set;
-        }
-
-        public string Kod2
+        public double CodeDbl
         {
             get;
             protected set;
         }
 
-        public string Slowo
+        public string CodeStr
         {
             get;
             protected set;
         }
 
-        public double biezacyPrzedzialOd
+        public string Word
         {
             get;
             protected set;
         }
 
-        public double biezacyPrzedzialDo
+        public double BiezacyPrzedzialOd
         {
             get;
             protected set;
         }
 
-        public double przedzialOd
+        public double BiezacyPrzedzialDo
         {
             get;
             protected set;
         }
 
-        public double przedzialDo
+        public double PrzedzialOd
         {
             get;
             protected set;
         }
 
-        public void ustawPodPrzedzialy(double biezacyPrzedzialOd, double biezacyPrzedzialDo)
+        public double PrzedzialDo
+        {
+            get;
+            protected set;
+        }
+
+        public void UstawPodPrzedzialy(double biezacyPrzedzialOd, double biezacyPrzedzialDo)
         {
             przedzial1Od = biezacyPrzedzialOd;
             przedzial1Do = biezacyPrzedzialOd + (biezacyPrzedzialDo - biezacyPrzedzialOd) * 0.4;
@@ -89,9 +89,9 @@ namespace ArithmeticCoding.ABSCoding
             przedzial3Do = Math.Round(przedzial3Do, 5);
             przedzial4Od = Math.Round(przedzial4Od, 5);
         }
-        abstract public double kodowanie(string Slowo);
-        abstract public string kodowanie1(string Slowo);
-        abstract public string dekodowanie(double Kod);
-        abstract public string dekodowanie1(string Kod2);
+        abstract public double Kodowanie(string word);
+        abstract public string Kodowanie1(string word);
+        abstract public string Dekodowanie(double codeDbl);
+        abstract public string Dekodowanie1(string codeSrt);
     }
 }

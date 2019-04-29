@@ -15,69 +15,70 @@ namespace ArithmeticCoding.IntCoding
         char[] bufor2 = new char[20];
         public IntegerCoding()
         {
-            this.Slowo = "0";
+            this.Word = "0";
         }
-        public IntegerCoding(string slowo)
+        public IntegerCoding(string word)
         {
-            this.Slowo = slowo;
+            this.Word = word;
         }
-        public void ustawPrzedzial(double biezacyPrzedzialOd, double biezacyPrzedzialDo, int k, string Slowo)
+        public void UstawPrzedzial(double biezacyPrzedzialOd, double biezacyPrzedzialDo, int k, string word)
         {
-            for (int i = k; i < Slowo.Length;)
+            for (int i = k; i < word.Length;)
             {
-                if (Slowo[i] == 'A')
+                if (word[i] == 'A')
                 {
-                    przedzialOd = biezacyPrzedzialOd;
-                    przedzialOd = Math.Floor(przedzialOd);
-                    przedzialDo = (biezacyPrzedzialOd + (biezacyPrzedzialDo - biezacyPrzedzialOd + 1) * 0.4) - 1;
-                    przedzialDo = Math.Floor(przedzialDo);
+                    PrzedzialOd = biezacyPrzedzialOd;
+                    PrzedzialOd = Math.Floor(PrzedzialOd);
+                    PrzedzialDo = (biezacyPrzedzialOd + (biezacyPrzedzialDo - biezacyPrzedzialOd + 1) * 0.4) - 1;
+                    PrzedzialDo = Math.Floor(PrzedzialDo);
                     break;
                 }
-                else if (Slowo[i] == 'B')
+                else if (word[i] == 'B')
                 {
-                    przedzialOd = biezacyPrzedzialOd + (biezacyPrzedzialDo - biezacyPrzedzialOd + 1) * 0.4;
-                    przedzialOd = Math.Floor(przedzialOd);
-                    przedzialDo = (biezacyPrzedzialOd + (biezacyPrzedzialDo - biezacyPrzedzialOd + 1) * 0.7) - 1;
-                    przedzialDo = Math.Floor(przedzialDo);
+                    PrzedzialOd = biezacyPrzedzialOd + (biezacyPrzedzialDo - biezacyPrzedzialOd + 1) * 0.4;
+                    PrzedzialOd = Math.Floor(PrzedzialOd);
+                    PrzedzialDo = (biezacyPrzedzialOd + (biezacyPrzedzialDo - biezacyPrzedzialOd + 1) * 0.7) - 1;
+                    PrzedzialDo = Math.Floor(PrzedzialDo);
                     break;
                 }
-                else if (Slowo[i] == 'C')
+                else if (word[i] == 'C')
                 {
-                    przedzialOd = biezacyPrzedzialOd + (biezacyPrzedzialDo - biezacyPrzedzialOd + 1) * 0.7;
-                    przedzialOd = Math.Floor(przedzialOd);
-                    przedzialDo = (biezacyPrzedzialOd + (biezacyPrzedzialDo - biezacyPrzedzialOd + 1) * 0.9) - 1;
-                    przedzialDo = Math.Floor(przedzialDo);
+                    PrzedzialOd = biezacyPrzedzialOd + (biezacyPrzedzialDo - biezacyPrzedzialOd + 1) * 0.7;
+                    PrzedzialOd = Math.Floor(PrzedzialOd);
+                    PrzedzialDo = (biezacyPrzedzialOd + (biezacyPrzedzialDo - biezacyPrzedzialOd + 1) * 0.9) - 1;
+                    PrzedzialDo = Math.Floor(PrzedzialDo);
                     break;
                 }
-                else if (Slowo[i] == '#')
+                else if (word[i] == '#')
                 {
-                    przedzialOd = biezacyPrzedzialOd + (biezacyPrzedzialDo - biezacyPrzedzialOd + 1) * 0.9;
-                    przedzialOd = Math.Floor(przedzialOd);
-                    przedzialDo = biezacyPrzedzialOd + (biezacyPrzedzialDo - biezacyPrzedzialOd) * 1;
-                    przedzialDo = Math.Floor(przedzialDo);
+                    PrzedzialOd = biezacyPrzedzialOd + (biezacyPrzedzialDo - biezacyPrzedzialOd + 1) * 0.9;
+                    PrzedzialOd = Math.Floor(PrzedzialOd);
+                    PrzedzialDo = biezacyPrzedzialOd + (biezacyPrzedzialDo - biezacyPrzedzialOd) * 1;
+                    PrzedzialDo = Math.Floor(PrzedzialDo);
                     break;
                 }
                 else break;
             }
         }
-        public override string kodowanie1(string Slowo)
+
+        public override string Kodowanie1(string word)
         {
-            biezacyPrzedzialOd = 0;
-            biezacyPrzedzialDo = 63;
-            for (int k = 0; k <= Slowo.Length; k++)
+            BiezacyPrzedzialOd = 0;
+            BiezacyPrzedzialDo = 63;
+            for (int k = 0; k <= word.Length; k++)
             {
-                if (k == Slowo.Length)
+                if (k == word.Length)
                 {
                     lBitow++;
-                    if (biezacyPrzedzialOd < 16)
+                    if (BiezacyPrzedzialOd < 16)
                     {
                         if (lBitow == 0) bity = "";
                         else if (lBitow == 1) bity = "1";
                         else if (lBitow == 2) bity = "11";
                         else if (lBitow == 3) bity = "111";
                         else if (lBitow == 4) bity = "1111";
-                        Kod2 = Kod2 + "0" + bity;
-                        return Kod2;
+                        CodeStr = CodeStr + "0" + bity;
+                        return CodeStr;
                     }
                     else
                     {
@@ -86,53 +87,53 @@ namespace ArithmeticCoding.IntCoding
                         else if (lBitow == 2) bity = "00";
                         else if (lBitow == 3) bity = "000";
                         else if (lBitow == 4) bity = "0000";
-                        Kod2 = Kod2 + "1" + bity;
-                        return Kod2;
+                        CodeStr = CodeStr + "1" + bity;
+                        return CodeStr;
                     }
                 }
-                ustawPrzedzial(biezacyPrzedzialOd, biezacyPrzedzialDo, k, Slowo);
-                biezacyPrzedzialOd = przedzialOd;
-                biezacyPrzedzialDo = przedzialDo;
+                UstawPrzedzial(BiezacyPrzedzialOd, BiezacyPrzedzialDo, k, word);
+                BiezacyPrzedzialOd = PrzedzialOd;
+                BiezacyPrzedzialDo = PrzedzialDo;
                 while (true)
                 {
 
-                    if (biezacyPrzedzialOd >= 0 && biezacyPrzedzialOd < 32 && biezacyPrzedzialDo >= 0 && biezacyPrzedzialDo < 32)
+                    if (BiezacyPrzedzialOd >= 0 && BiezacyPrzedzialOd < 32 && BiezacyPrzedzialDo >= 0 && BiezacyPrzedzialDo < 32)
                     {
                         if (lBitow == 0) bity = "";
                         else if (lBitow == 1) bity = "1";
                         else if (lBitow == 2) bity = "11";
                         else if (lBitow == 3) bity = "111";
                         else if (lBitow == 4) bity = "1111";
-                        Kod2 = Kod2 + "0" + bity;
+                        CodeStr = CodeStr + "0" + bity;
                         lBitow = 0;
 
                     }
-                    else if (biezacyPrzedzialOd >= 32 && biezacyPrzedzialOd < 64 && biezacyPrzedzialDo >= 32 && biezacyPrzedzialDo < 64)
+                    else if (BiezacyPrzedzialOd >= 32 && BiezacyPrzedzialOd < 64 && BiezacyPrzedzialDo >= 32 && BiezacyPrzedzialDo < 64)
                     {
                         if (lBitow == 0) bity = "";
                         else if (lBitow == 1) bity = "0";
                         else if (lBitow == 2) bity = "00";
                         else if (lBitow == 3) bity = "000";
                         else if (lBitow == 4) bity = "0000";
-                        Kod2 = Kod2 + "1" + bity;
+                        CodeStr = CodeStr + "1" + bity;
                         lBitow = 0;
-                        biezacyPrzedzialOd -= 32;
-                        biezacyPrzedzialDo -= 32;
+                        BiezacyPrzedzialOd -= 32;
+                        BiezacyPrzedzialDo -= 32;
 
                     }
-                    else if (biezacyPrzedzialOd >= 16 && biezacyPrzedzialOd <= 48 && biezacyPrzedzialDo >= 16 && biezacyPrzedzialDo < 48)
+                    else if (BiezacyPrzedzialOd >= 16 && BiezacyPrzedzialOd <= 48 && BiezacyPrzedzialDo >= 16 && BiezacyPrzedzialDo < 48)
                     {
                         lBitow++;
-                        biezacyPrzedzialOd -= 16;
-                        biezacyPrzedzialDo -= 16;
+                        BiezacyPrzedzialOd -= 16;
+                        BiezacyPrzedzialDo -= 16;
                     }
                     else break;
-                    biezacyPrzedzialOd *= 2;
-                    biezacyPrzedzialDo *= 2;
-                    biezacyPrzedzialDo += 1;
+                    BiezacyPrzedzialOd *= 2;
+                    BiezacyPrzedzialDo *= 2;
+                    BiezacyPrzedzialDo += 1;
                 }
             }
-            return Kod2;
+            return CodeStr;
         }
         public void ustawPodPrzedzial(double biezacyPrzedzialOd, double biezacyPrzedzialDo)
         {
@@ -183,12 +184,12 @@ namespace ArithmeticCoding.IntCoding
                 else bufor2[bufor2.Length - 1] = '0';
             }
         }
-        public override string dekodowanie1(string Kod2)
+        public override string Dekodowanie1(string Kod2)
         {
 
-            Slowo = "";
-            biezacyPrzedzialOd = 0;
-            biezacyPrzedzialDo = 63;
+            Word = "";
+            BiezacyPrzedzialOd = 0;
+            BiezacyPrzedzialDo = 63;
             for (int i = 0; i < bufor1.Length; i++)
             {
                 bufor1[i] = Kod2[i];
@@ -206,15 +207,15 @@ namespace ArithmeticCoding.IntCoding
             {
                 while (true)
                 {
-                    if (biezacyPrzedzialOd >= 0 && biezacyPrzedzialOd < 32 && biezacyPrzedzialDo >= 0 && biezacyPrzedzialDo < 32)
+                    if (BiezacyPrzedzialOd >= 0 && BiezacyPrzedzialOd < 32 && BiezacyPrzedzialDo >= 0 && BiezacyPrzedzialDo < 32)
                     {
                         przesunBit(bufor1, bufor2);
                         kodLcal = zamianaBinNaInt(bufor1);
                     }
-                    else if (biezacyPrzedzialOd >= 32 && biezacyPrzedzialOd < 64 && biezacyPrzedzialDo >= 32 && biezacyPrzedzialDo < 64)
+                    else if (BiezacyPrzedzialOd >= 32 && BiezacyPrzedzialOd < 64 && BiezacyPrzedzialDo >= 32 && BiezacyPrzedzialDo < 64)
                     {
-                        biezacyPrzedzialOd -= 32;
-                        biezacyPrzedzialDo -= 32;
+                        BiezacyPrzedzialOd -= 32;
+                        BiezacyPrzedzialDo -= 32;
                         kodLcal -= 32;
                         calTemp = Convert.ToString(kodLcal, 2);
                         int j = 0;
@@ -230,10 +231,10 @@ namespace ArithmeticCoding.IntCoding
                         przesunBit(bufor1, bufor2);
                         kodLcal = zamianaBinNaInt(bufor1);
                     }
-                    else if (biezacyPrzedzialOd >= 16 && biezacyPrzedzialOd <= 48 && biezacyPrzedzialDo >= 16 && biezacyPrzedzialDo <= 48)
+                    else if (BiezacyPrzedzialOd >= 16 && BiezacyPrzedzialOd <= 48 && BiezacyPrzedzialDo >= 16 && BiezacyPrzedzialDo <= 48)
                     {
-                        biezacyPrzedzialOd -= 16;
-                        biezacyPrzedzialDo -= 16;
+                        BiezacyPrzedzialOd -= 16;
+                        BiezacyPrzedzialDo -= 16;
                         kodLcal -= 16;
                         calTemp = Convert.ToString(kodLcal, 2);
                         int j = 0;
@@ -251,44 +252,44 @@ namespace ArithmeticCoding.IntCoding
                         kodLcal = zamianaBinNaInt(bufor1);
                     }
                     else break;
-                    biezacyPrzedzialOd *= 2;
-                    biezacyPrzedzialDo *= 2;
-                    biezacyPrzedzialDo += 1;
+                    BiezacyPrzedzialOd *= 2;
+                    BiezacyPrzedzialDo *= 2;
+                    BiezacyPrzedzialDo += 1;
                 }
 
-                ustawPodPrzedzial(biezacyPrzedzialOd, biezacyPrzedzialDo);
+                ustawPodPrzedzial(BiezacyPrzedzialOd, BiezacyPrzedzialDo);
                 if (przedzial1Od <= kodLcal && kodLcal <= przedzial1Do)
                 {
-                    Slowo += "A";
-                    biezacyPrzedzialOd = przedzial1Od;
-                    biezacyPrzedzialDo = przedzial1Do;
+                    Word += "A";
+                    BiezacyPrzedzialOd = przedzial1Od;
+                    BiezacyPrzedzialDo = przedzial1Do;
                 }
                 else if (przedzial2Od <= kodLcal && kodLcal <= przedzial2Do)
                 {
-                    Slowo += "B";
-                    biezacyPrzedzialOd = przedzial2Od;
-                    biezacyPrzedzialDo = przedzial2Do;
+                    Word += "B";
+                    BiezacyPrzedzialOd = przedzial2Od;
+                    BiezacyPrzedzialDo = przedzial2Do;
                 }
                 else if (przedzial3Od <= kodLcal && kodLcal <= przedzial3Do)
                 {
-                    Slowo += "C";
-                    biezacyPrzedzialOd = przedzial3Od;
-                    biezacyPrzedzialDo = przedzial3Do;
+                    Word += "C";
+                    BiezacyPrzedzialOd = przedzial3Od;
+                    BiezacyPrzedzialDo = przedzial3Do;
 
                 }
                 else if (przedzial4Od <= kodLcal && kodLcal <= przedzial4Do)
                 {
-                    Slowo += "#";
+                    Word += "#";
                     break;
                 }
             }
-            return Slowo;
+            return Word;
         }
-        public override double kodowanie(string Slowo)
+        public override double Kodowanie(string Slowo)
         {
             return 0;
         }
-        public override string dekodowanie(double Kod)
+        public override string Dekodowanie(double Kod)
         {
             return "0";
         }

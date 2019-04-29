@@ -11,92 +11,92 @@ namespace ArithmeticCoding.FPCoding
     {
         public FloatingPointCoding()
         {
-            this.Slowo = "0";
+            this.Word = "0";
         }
         public FloatingPointCoding(string slowo)
         {
-            this.Slowo = slowo;
+            this.Word = slowo;
         }
-        public override double kodowanie(string Slowo)
+        public override double Kodowanie(string Slowo)
         {
-            biezacyPrzedzialOd = 0.0;
-            biezacyPrzedzialDo = 1.0;
+            BiezacyPrzedzialOd = 0.0;
+            BiezacyPrzedzialDo = 1.0;
             for (int i = 0; i <= Slowo.Length; i++)
             {
                 if (Slowo[i] == 'A')
                 {
-                    przedzialOd = biezacyPrzedzialOd;
-                    przedzialDo = biezacyPrzedzialOd + (biezacyPrzedzialDo - biezacyPrzedzialOd) * 0.4;
-                    biezacyPrzedzialOd = przedzialOd;
-                    biezacyPrzedzialDo = przedzialDo;
+                    PrzedzialOd = BiezacyPrzedzialOd;
+                    PrzedzialDo = BiezacyPrzedzialOd + (BiezacyPrzedzialDo - BiezacyPrzedzialOd) * 0.4;
+                    BiezacyPrzedzialOd = PrzedzialOd;
+                    BiezacyPrzedzialDo = PrzedzialDo;
                 }
                 else if (Slowo[i] == 'B')
                 {
-                    przedzialOd = biezacyPrzedzialOd + (biezacyPrzedzialDo - biezacyPrzedzialOd) * 0.4;
-                    przedzialDo = biezacyPrzedzialOd + (biezacyPrzedzialDo - biezacyPrzedzialOd) * 0.7;
-                    biezacyPrzedzialOd = przedzialOd;
-                    biezacyPrzedzialDo = przedzialDo;
+                    PrzedzialOd = BiezacyPrzedzialOd + (BiezacyPrzedzialDo - BiezacyPrzedzialOd) * 0.4;
+                    PrzedzialDo = BiezacyPrzedzialOd + (BiezacyPrzedzialDo - BiezacyPrzedzialOd) * 0.7;
+                    BiezacyPrzedzialOd = PrzedzialOd;
+                    BiezacyPrzedzialDo = PrzedzialDo;
                 }
                 else if (Slowo[i] == 'C')
                 {
-                    przedzialOd = biezacyPrzedzialOd + (biezacyPrzedzialDo - biezacyPrzedzialOd) * 0.7;
-                    przedzialDo = biezacyPrzedzialOd + (biezacyPrzedzialDo - biezacyPrzedzialOd) * 0.9;
-                    biezacyPrzedzialOd = przedzialOd;
-                    biezacyPrzedzialDo = przedzialDo;
+                    PrzedzialOd = BiezacyPrzedzialOd + (BiezacyPrzedzialDo - BiezacyPrzedzialOd) * 0.7;
+                    PrzedzialDo = BiezacyPrzedzialOd + (BiezacyPrzedzialDo - BiezacyPrzedzialOd) * 0.9;
+                    BiezacyPrzedzialOd = PrzedzialOd;
+                    BiezacyPrzedzialDo = PrzedzialDo;
                 }
                 else if (Slowo[i] == '#')
                 {
-                    przedzialOd = biezacyPrzedzialOd + (biezacyPrzedzialDo - biezacyPrzedzialOd) * 0.9;
-                    przedzialDo = biezacyPrzedzialOd + (biezacyPrzedzialDo - biezacyPrzedzialOd) * 1;
-                    biezacyPrzedzialOd = przedzialOd;
-                    biezacyPrzedzialDo = przedzialDo;
-                    Kod = przedzialOd;
+                    PrzedzialOd = BiezacyPrzedzialOd + (BiezacyPrzedzialDo - BiezacyPrzedzialOd) * 0.9;
+                    PrzedzialDo = BiezacyPrzedzialOd + (BiezacyPrzedzialDo - BiezacyPrzedzialOd) * 1;
+                    BiezacyPrzedzialOd = PrzedzialOd;
+                    BiezacyPrzedzialDo = PrzedzialDo;
+                    CodeDbl = PrzedzialOd;
                     break;
                 }
             }
 
-            return Kod;
+            return CodeDbl;
         }
-        public override string dekodowanie(double Kod)
+        public override string Dekodowanie(double codeDbl)
         {
-            Slowo = "";
-            biezacyPrzedzialOd = 0.0;
-            biezacyPrzedzialDo = 1.0;
+            Word = "";
+            BiezacyPrzedzialOd = 0.0;
+            BiezacyPrzedzialDo = 1.0;
             while (true)
             {
-                ustawPodPrzedzialy(biezacyPrzedzialOd, biezacyPrzedzialDo);
-                if (przedzial1Od < Kod && Kod < przedzial1Do)
+                UstawPodPrzedzialy(BiezacyPrzedzialOd, BiezacyPrzedzialDo);
+                if (przedzial1Od < codeDbl && codeDbl < przedzial1Do)
                 {
-                    Slowo += "A";
-                    biezacyPrzedzialOd = przedzial1Od;
-                    biezacyPrzedzialDo = przedzial1Do;
+                    Word += "A";
+                    BiezacyPrzedzialOd = przedzial1Od;
+                    BiezacyPrzedzialDo = przedzial1Do;
                 }
-                else if (przedzial2Od <= Kod && Kod < przedzial2Do)
+                else if (przedzial2Od <= codeDbl && codeDbl < przedzial2Do)
                 {
-                    Slowo += "B";
-                    biezacyPrzedzialOd = przedzial2Od;
-                    biezacyPrzedzialDo = przedzial2Do;
+                    Word += "B";
+                    BiezacyPrzedzialOd = przedzial2Od;
+                    BiezacyPrzedzialDo = przedzial2Do;
                 }
-                else if (przedzial3Od <= Kod && Kod < przedzial3Do)
+                else if (przedzial3Od <= codeDbl && codeDbl < przedzial3Do)
                 {
-                    Slowo += "C";
-                    biezacyPrzedzialOd = przedzial3Od;
-                    biezacyPrzedzialDo = przedzial3Do;
+                    Word += "C";
+                    BiezacyPrzedzialOd = przedzial3Od;
+                    BiezacyPrzedzialDo = przedzial3Do;
                 }
-                else if (przedzial4Od <= Kod && Kod < przedzial4Do)
+                else if (przedzial4Od <= codeDbl && codeDbl < przedzial4Do)
                 {
-                    Slowo += "#";
+                    Word += "#";
                     break;
                 }
             }
 
-            return Slowo;
+            return Word;
         }
-        public override string kodowanie1(string Slowo)
+        public override string Kodowanie1(string word)
         {
             return "0";
         }
-        public override string dekodowanie1(string Kod2)
+        public override string Dekodowanie1(string codeStr)
         {
             return "0";
         }

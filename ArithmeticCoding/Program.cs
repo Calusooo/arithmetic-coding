@@ -13,49 +13,53 @@ namespace ArithmeticCoding
 {
     class Program
     {
-        public static string slowo, kodB, kodC, kodCal, kodBin, slowoZ, slowoC, slowoB;
-        public static double kodZ, kodZM;
+        // dołożyć dla wielu języków i18n
+        public static string wordToCode, binaryCode, integerCode, integerDecode, binaryDecode, floatingPointWord, integerWord, binaryWord;
+        public static double floatingPointCode, floatingPointDecode;
 
         static void Main(string[] args)
         {
+            
             Console.WriteLine("KODOWANIE: ");
             Console.WriteLine("Podaj slowo do zakodowania składające się z 5 znakow (P = {0,4;0,3;0.2;0.1)");
             Console.WriteLine("Bank znaków: A,B,C - jako 5 znak wprowadz #");
-            ReadData slowo1 = new ReadData();
-            slowo = slowo1.czytajSlowo();
+            ReadData word = new ReadData();
+            wordToCode = word.ReadWord();
 
-            Coding kod10 = new FloatingPointCoding();
-            kodZ = kod10.kodowanie(slowo);
-            Console.WriteLine("Kod zmiennoprzecinkowy dla slowa " + slowo + " = " + kodZ);
+            Coding fpCode = new FloatingPointCoding();
+            floatingPointCode = fpCode.Kodowanie(wordToCode);
+            Console.WriteLine($"Kod zmiennoprzecinkowy dla slowa {wordToCode} = {floatingPointCode}");
 
-            Coding kod20 = new BinaryCoding();
-            kodB = kod20.kodowanie1(slowo);
-            Console.WriteLine("Kod binarny dla slowa " + slowo + " = " + kodB);
+            Coding binCode = new BinaryCoding();
+            binaryCode = binCode.Kodowanie(wordToCode);
+            Console.WriteLine($"Kod binarny dla slowa {wordToCode} = {binaryCode}");
 
-            Coding kod30 = new IntegerCoding();
-            kodC = kod30.kodowanie1(slowo);
-            Console.WriteLine("Kod calkowitoliczbowy dla slowa " + slowo + " = " + kodC);
+            Coding intCode = new IntegerCoding();
+            integerCode = intCode.Kodowanie(wordToCode);
+            Console.WriteLine($"Kod calkowitoliczbowy dla slowa {wordToCode} = {floatingPointCode}");
 
             Console.WriteLine();
             Console.WriteLine("DEKODOWANIE: ");
-            ReadData kod1 = new ReadData();
-            kodZM = kod1.czytajKod();
+            ReadData code = new ReadData();
+            floatingPointDecode = code.ReadFloatingPointCodeToDecode();
             Coding slowo10 = new FloatingPointCoding();
-            slowoZ = slowo10.dekodowanie(kodZM);
-            Console.WriteLine("Zdekodowanie slowo (zmiennoprzecinkowe) brzmi: " + slowoZ);
+            floatingPointWord = slowo10.Dekodowanie(floatingPointDecode);
+            Console.WriteLine($"Zdekodowanie slowo (zmiennoprzecinkowe) brzmi: {floatingPointWord}");
+            
 
             ReadData kod3 = new ReadData();
-            kodBin = kod3.czytajKod2();
+            binaryDecode = kod3.ReadBinaryCodeToDecode();
             Coding slowo30 = new BinaryCoding();
-            slowoB = slowo30.dekodowanie1(kodBin);
-            Console.WriteLine("Zdekodowanie slowo (binarne) brzmi: " + slowoZ);
+            binaryWord = slowo30.Dekodowanie1(binaryDecode);
+            Console.WriteLine($"Zdekodowanie slowo (binarne) brzmi: {binaryWord}");
 
             ReadData kod2 = new ReadData();
-            kodCal = kod2.czytajKod1();
+            integerDecode = kod2.ReadIntegerCodeToDecode();
             Coding slowo20 = new IntegerCoding();
-            slowoC = slowo20.dekodowanie1(kodCal);
-            Console.WriteLine("Zdekodowanie slowo (calkowitoliczbowe) brzmi: " + slowoC);
-            
+            integerWord = slowo20.Dekodowanie1(integerDecode);
+            Console.WriteLine($"Zdekodowanie slowo (calkowitoliczbowe) brzmi: {integerWord}");
+
+
             Console.ReadLine();
         }
     }
